@@ -48,9 +48,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 const DEFAULT_AUTH_STATE: AuthState = {
-  isSignedIn: false,
-  userName: null,
-  userId: null,
+    isSignedIn: false,
+    userName: null,
+    userId: null,
 }
 
 export default function App() {
