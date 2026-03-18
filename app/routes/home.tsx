@@ -1,9 +1,11 @@
 import type { Route } from "./+types/home";
 import Navbar from "../../components/Navbar";
-import { ArrowRight, ArrowUpRight, Clock, Layers } from "lucide-react";
+import {ArrowRight, ArrowUpRight, Clock, Layers} from "lucide-react";
 import Button from "../../components/ui/Button";
-import { useNavigate } from "react-router";
-import { useEffect, useRef, useState } from "react";
+import Upload from "../../components/Upload";
+import {useNavigate} from "react-router";
+import {useEffect, useRef, useState} from "react";
+
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -13,8 +15,18 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export default function Home() {
+    const navigate = useNavigate();
+
+    const handleUploadComplete = (base64Image: string) => {
+      const newId = Date.now().toString();
+     
+      navigate(`/visualizer/${newId}`);
+      
+      return true;
+    }
+
   return (
-    <div className="home"> {/* Adiciona uma classe principal */}
+    <div className="home">
       <Navbar />
 
       <section className="hero">
@@ -42,27 +54,31 @@ export default function Home() {
           <Button variant="outline" size="lg" className="demo">
             Watch Demo
           </Button>
-
         </div>
 
         <div className="upload-shell" id="upload">
-
-          <div className="upload-card">
+          <div
+            className="upload-card"
+            style={{
+              position: "relative",
+              zIndex: 10,
+              minHeight: 260,     // 🔥 garante área de drop
+              pointerEvents: "auto"
+            }}
+          >
             <div className="upload-head">
               <div className="upload-icon">
                 <Layers className="icon" />
               </div>
 
               <h3>Upload Your floor</h3>
-              <p>Support JPG, PNG, formats up to
-                10MB
-              </p>
+              <p>Support JPG, PNG formats up to 10MB</p>
             </div>
 
-            <p>upload images</p>
+            <Upload onComplete={handleUploadComplete}/>
           </div>
         </div>
-      </section >
+      </section>
 
       <section className="projects">
         <div className="section-inner">
