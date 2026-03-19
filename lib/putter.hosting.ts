@@ -24,7 +24,7 @@ export const getOrCreateHostingConfig = async (): Promise<HostingConfig | null> 
 
         return record;
     } catch (e) {
-        console.warn(`Could not find subdomain: ${e}`);
+        console.warn(`Failed to create hosting subdomain: ${e}`);
         return null;
     }
 }
