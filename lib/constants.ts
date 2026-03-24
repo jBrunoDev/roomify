@@ -1,4 +1,7 @@
 export const PUTER_WORKER_URL = import.meta.env.VITE_PUTER_WORKER_URL || "";
+// 👇 COLOCA AQUI
+console.log("ENV:", import.meta.env);
+console.log("WORKER_URL:", import.meta.env.VITE_PUTER_WORKER_URL);
 
 // Storage Paths
 export const STORAGE_PATHS = {

@@ -113,7 +113,7 @@ interface StoreHostedImageParams {
     hosting: HostingConfig | null;
     url: string;
     projectId: string;
-    label: "source" | "rendered";   
+    label: "source" | "rendered";
 }
 
 interface CreateProjectParams {
